@@ -5,31 +5,20 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
     <title>Test page</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
     <form name="auth">
-        <input type="text" value="Your name" name="name">
-        <input type="password" value="Password" name="pwd">
-        <input type="submit" value="Give me your data">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" placeholder="Your nice username" autocomplete>
+
+        <label for="pwd">Password</label>
+        <input type="password" name="pwd" id="pwd" placeholder="Nice password at least 8 characters" autocomplete>
+
+        <input type="submit">
     </form>
-    <script>
-      var authForm = document.forms.auth;
-      var tg = window.Telegram.WebApp;
-      function sendDataToBot(event) {
-        var formData =  new FormData(authForm);
-        let data = {
-          name: formData.get("name"),
-          password: formData.get("pwd")
-        }
-        console.log(data);
-        tg.sendData(JSON.stringify(data));
-        tg.close();
-        event.preventDefault();
-      }
-      authForm.addEventListener("submit", sendDataToBot);
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
